@@ -10,7 +10,7 @@ personal_info = {
     "age": 21,
     "email": "irfanrahaman324@gmail.com",
     "github": "https://github.com/Irfanrahaman",
-    "linkedin": "https://linkedin.com/in/irfanrahaman",
+    "linkedin": "https://www.linkedin.com/in/md-irfan-rahaman-1902672b9",
     "fiverr": "https://fiverr.com/irfanrahaman",
     "skills": ["AI", "Machine Learning", "Cloud Computing", "Computer Vision"],
     "hire_link": "mailto:irfanrahaman324@gmail.com",
@@ -24,17 +24,17 @@ projects = [
     {
         "title": "AI Chatbot",
         "description": "A conversational chatbot for task automation and customer support.",
-        "link": "https://github.com/Irfanrahaman/chatbot-ai",
+        "link": "https://github.com/Irfanrahaman/ai-chatbot",
     },
     {
         "title": "Customer Churn Prediction",
         "description": "Machine learning model for predicting customer churn using convolution.",
-        "link": "https://github.com/Irfanrahaman/customer-churn-prediction",
+        "link": "https://github.com/Irfanrahaman/customer-churn-prediction-app",
     },
     {
         "title": "Invoice Data Extractor",
         "description": "OCR-based parser for extracting structured data from scanned invoices.",
-        "link": "https://github.com/Irfanrahaman/ocr-ai-project",
+        "link": "https://github.com/Irfanrahaman/Automated-Data-Extraction-from-Invoices-Documents",
     },
     {
         "title": "AI E-Commerce Recommender",
@@ -45,9 +45,9 @@ projects = [
 
 # Certificates
 certificates = [
-    {"name": "Intro to Deep Learning", "link": "https://www.kaggle.com/certificate/placeholder1"},
-    {"name": "Intermediate Machine Learning", "link": "https://www.kaggle.com/certificate/placeholder2"},
-    {"name" : "Intro to Machine Learning", "link" : "https://www.kaggle.com/learn/certification/irfanrahaman/intro-to-deep-learning"},
+    {"name": "Intro to Deep Learning", "link": "https://www.kaggle.com/learn/certification/irfanrahaman/intro-to-deep-learning"},
+    {"name": "Intermediate Machine Learning", "link": "https://www.kaggle.com/learn/certification/irfanrahaman/intermediate-machine-learning"},
+    {"name" : "Intro to Machine Learning", "link" : "https://www.kaggle.com/learn/certification/irfanrahaman/intro-to-machine-learning"},
     {"name" : "Data cience & Analytics", "link" : "https://www.life-global.org/certificate/6f7310e8-a0e9-46e1-94b9-e04af8a98e26"},
 ]
 
