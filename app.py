@@ -1,7 +1,8 @@
 from flask import Flask, render_template, send_from_directory, abort
 import os
 
-app = Flask(__name__)
+# এখানে পরিবর্তন করা হয়েছে: template_folder='.' যোগ করা হয়েছে
+app = Flask(__name__, template_folder='.')
 
 # Personal Information
 personal_info = {
