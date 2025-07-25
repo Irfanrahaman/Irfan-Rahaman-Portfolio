@@ -1,0 +1,533 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a1a; /* Dark background */
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Subtle background animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(0, 212, 255, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at bottom right, rgba(161, 0, 255, 0.05) 0%, transparent 30%);
+    z-index: -1;
+    animation: backgroundPulse 15s infinite alternate;
+}
+
+@keyframes backgroundPulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.02); opacity: 0.95; }
+}
+
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a1a, #1a1a2e);
+    display: flex; /* Changed to flex for side-by-side layout */
+    flex-direction: row; /* Arrange children in a row by default */
+    align-items: center; /* Vertically center items in the row */
+    justify-content: center; /* Horizontally center content and image */
+    padding: 2rem 4rem;
+    position: relative; /* Needed for absolute positioning of children */
+    overflow: hidden;
+    text-align: left; /* Text content will align left */
+}
+
+.hero-content {
+    z-index: 3; /* z-index বাড়ানো হয়েছে যাতে এটি ছবির উপরে আসে */
+    max-width: 60%; /* Allow content to take most of the left space */
+    width: 100%;
+    text-align: left; /* Align text to the left within this div */
+    animation: fadeInDown 1s ease-out; /* Keep fade-in effect */
+    margin-right: auto; /* Pushes content to the left */
+    position: relative; /* z-index কাজ করার জন্য এটি প্রয়োজন */
+}
+
+/* Image on the right, partially overlapping text vertically */
+.profile-pic {
+    position: absolute;
+    right: 3%;
+    bottom: 8%;
+    width: 80%;
+    max-width: 900px;
+    height: auto;
+    object-fit: cover;
+    opacity: 1.0;
+    z-index: 1; /* <<< LOWER z-index so text appears over image */
+    mask-image: radial-gradient(ellipse 40% 40% at center, rgba(0,0,0,1) 00%, rgba(0,0,0,0.8) 00%, transparent 0%);
+    -webkit-mask-image: radial-gradient(ellipse 45% 50% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 60%, transparent 100%);
+    transition: all 0.4s ease-in-out;
+}
+
+
+
+/* H1 text styling */
+.hero-content h1 {
+    font-size: 4.5rem;
+    color: #ffffff; /* Default color for the non-gradient part */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Removed text-shadow for glow effect (now handled by .gradient-text) */
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Gradient for specific text within H1 (matching Hire Me button) */
+.gradient-text {
+    background: linear-gradient(45deg, #9400D3, #9932CC); /* আরও উজ্জ্বল ভায়োলেট এবং पर्पल */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* ব্যাকগ্রাউন্ড গ্র্যাডিয়েন্ট দেখানোর জন্য টেক্সটকে স্বচ্ছ করে */
+    display: inline;
+    text-shadow: 0 0 3px rgba(153, 50, 204, 0.6); /* হালকা গ্লো ইফেক্ট */
+}
+
+
+.hero-content h2 {
+    font-size: 3.0rem; /* Increased font size */
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.subtitle {
+    font-size: 1.6rem; /* Increased font size */
+    color: #00ffcc;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1st ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.buttons {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left now */
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Resume button with new gradient color (blue prominent) */
+.cta-button:first-child {
+    background: linear-gradient(45deg, #007bff 30%, #00c0ff 60%, #ff69b4); /* Blue, lighter blue, then pink */
+    color: #ffffff; /* Changed text color to white for better contrast */
+    border: 2px solid #007bff;
+}
+
+.cta-button:first-child:hover {
+    background: linear-gradient(45deg, #ff69b4, #00c0ff, #007bff); /* Reverse on hover */
+}
+
+.hire {
+    background: linear-gradient(45deg, #a100ff, #8500cc);
+    color: #ffffff;
+    border: 2px solid #a100ff;
+}
+
+.hire:hover {
+    background: linear-gradient(45deg, #8500cc, #a100ff);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-start; /* Align social icons to the left now */
+    gap: 2rem;
+    margin-top: 2rem;
+    animation: fadeInUp 1s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.social-icons a {
+    /* Apply gradient to social icons */
+    background: linear-gradient(45deg, #00d4ff, #a100ff, #00ffcc); /* Mixed gradient */
+    -webkit-background-clip: text;
+    background-clip: text; /* Added for compatibility */
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for browsers not supporting text fill */
+    font-size: 2.2rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.3) translateY(-5px);
+    filter: brightness(1.2); /* Make it brighter on hover */
+}
+
+/* Section General Styling - "Inside-out" / Inset effect */
+.section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: #1a1a2e; /* Slightly lighter dark background for sections */
+    margin: 3rem auto;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), /* Inset shadow for depth */
+                0 8px 30px rgba(0, 0, 0, 0.4); /* Outer shadow for lift */
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+.section:nth-child(even) {
+    background-color: #0f0f20;
+}
+
+.section h2 {
+    font-size: 2.8rem;
+    color: #00d4ff;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #00ffcc);
+    transform: translateX(-50%);
+    transition: width 0.4s ease-out;
+}
+
+.section:hover h2::after {
+    width: 100%;
+}
+
+
+/* About Section */
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #e0e0e0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Projects Section */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: #1a1a2e;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4), /* Inset shadow for cards */
+                0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 212, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    z-index: 0;
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6), /* Deeper inset shadow on hover */
+                0 15px 40px rgba(0, 0, 0, 0.7);
+    background-color: #2a2a40;
+}
+
+.project-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #00d4ff;
+}
+
+.project-card p {
+    color: #c0c0c0;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.project-button {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    background: linear-gradient(45deg, #00d4ff, #00ffcc);
+    color: #0a0a1a;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-button:hover {
+    background: linear-gradient(45deg, #00ffcc, #00d4ff);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Certificates Section */
+.certificate-list {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.certificate-list li {
+    margin: 1rem 0;
+    color: #e0e0e0;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), /* Inset shadow for list items */
+                0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-list li:hover {
+    transform: translateX(10px) scale(1.01);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), /* Deeper inset shadow on hover */
+                0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.certificate-list a {
+    color: #00d4ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.certificate-list a:hover {
+    color: #00ffcc;
+    text-decoration: underline;
+}
+
+.badge {
+    background: linear-gradient(45deg, #a100ff, #00ffcc);
+    color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background-color: #0f0f20;
+    color: #888888;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column; /* Stack on smaller screens */
+        text-align: center; /* Center content when stacked */
+        padding: 2rem;
+    }
+    .hero-content {
+        max-width: 100%; /* Take full width when stacked */
+        text-align: center; /* Center text within hero-content */
+        margin-right: auto; /* Remove specific margin for stacking */
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    .social-icons {
+        justify-content: center; /* Center social icons when stacked */
+    }
+    .section h2 {
+        font-size: 2.2rem;
+    }
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .project-card {
+        padding: 1.5rem;
+    }
+    .profile-pic {
+        position: relative; /* Make it flow naturally below content */
+        margin: 3rem auto 0 auto; /* Center it below content */
+        right: auto;
+        bottom: auto;
+        width: 60%; /* Adjust size */
+        height: 350px; /* Keep consistent height */
+        /* Updated mask for responsiveness - removed specific override to keep elliptical blend */
+        /* mask-image: radial-gradient(closest-side at center, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 70%, rgba(0,0,0,0.8) 85%, transparent 100%); */
+        /* -webkit-mask-image: radial-gradient(closest-side at center, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 70%, rgba(0,0,0,0.8) 85%, transparent 100%); */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    .section {
+        margin: 2rem 1rem;
+    }
+    .about p {
+        font-size: 1rem;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card h3 {
+        font-size: 1.5rem;
+    }
+    .certificate-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    .badge {
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+    .profile-pic {
+        width: 70%; /* Adjusted width for smaller screens */
+        height: 250px; /* Adjusted height */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    .profile-pic {
+        width: 85%; /* Adjusted width for very small screens */
+        height: 200px; /* Adjusted height */
+    }
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+    .section h2 {
+        font-size: 1.6rem;
+    }
+}
